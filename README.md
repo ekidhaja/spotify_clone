@@ -1,3 +1,7 @@
+## Overview
+
+![Spotify redesign](https://cdn.dribbble.com/users/1133834/screenshots/15165960/media/03c6c87cfbbc7cc37af7ed808e1dfd7e.png)
+
 ## Description
 
 This project is a Spotify web clone inspired by this [Spotify redesign concept](https://dribbble.com/shots/15165960-Spotify-Redesign). It is fully responsive and displays well on mobile devices too.
