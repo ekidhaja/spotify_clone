@@ -1,32 +1,51 @@
-import Body from "./Body";
 import Sidebar from "./Sidebar";
-import Right from "./Right";
+import { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
+import { useSession } from "next-auth/react";
+import Player from "./Player";
 import { playingTrackState } from "../atoms/playerAtom";
 import { useRecoilState } from "recoil";
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import Body from "./Body";
+import Right from "./Right";
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: process.env.SPOTIFY_CLIENT_ID,
+  clientId: process.env.SPOTIFY_CLIENT_ID,
 });
 
 const Dashboard = () => {
-    const { data: session } = useSession();
-    const { accessToken } = session;
-    const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
+  const { data: session } = useSession();
+  const { accessToken } = session;
 
-    const chooseTrack = (track) => {
-        setPlayingTrack(track);
-    };
+  const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
+  const [showPlayer, setShowPlayer] = useState(false);
 
-    return (
-        <main className="flex min-h-screen min-w-max bg-black lg:pb-24">
-            <Sidebar />
-            <Body spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
-            <Right spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
-        </main>
-    );
+  useEffect(() => {
+    setShowPlayer(true);
+  }, []);
+
+  const chooseTrack = (track) => {
+    setPlayingTrack(track);
+  };
+
+  useEffect(() => {
+    if (!accessToken) return;
+    spotifyApi.setAccessToken(accessToken);
+  }, [accessToken]);
+
+  return (
+    <main className="bg-white flex">
+    {/*<main className="flex min-h-screen min-w-max bg-black lg:pb-24">*/}
+      <Sidebar />
+      <Body chooseTrack={chooseTrack} spotifyApi={spotifyApi} />
+      <Right chooseTrack={chooseTrack} spotifyApi={spotifyApi} /> 
+
+      {showPlayer && (
+        <div className="fixed bottom-0 left-0 right-0 z-50">
+          <Player accessToken={accessToken} trackUri={playingTrack.uri} />
+        </div>
+      )}
+    </main>
+  );
 }
- 
+
 export default Dashboard;

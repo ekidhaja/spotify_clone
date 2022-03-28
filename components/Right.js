@@ -32,7 +32,7 @@ const Right = ({ chooseTrack, spotifyApi }) => {
   }, [accessToken]);
 
   return (
-    <section className="p-4 space-y-8 pr-8">
+    <section className="hidden lg:block p-4 space-y-8 pr-8 bg-black">
       <div className="flex space-x-2 items-center justify-between">
         {/* Icons */}
         <div className="flex items-center space-x-4 border-2 border-[#262626] rounded-full h-12 py-3 px-4">
@@ -42,7 +42,7 @@ const Right = ({ chooseTrack, spotifyApi }) => {
             <BiBell className="text-[#CCCCCC] text-xl" />
           </div>
         </div>
-        {/* Profile */}
+
         <Dropdown />
       </div>
 
@@ -53,7 +53,7 @@ const Right = ({ chooseTrack, spotifyApi }) => {
           <ViewGridIcon className="text-[#686868] h-6" />
         </div>
 
-        <div className="space-y-4 overflow-y-scroll overflow-x-hidden h-[250px] md:h-[400px] scrollbar-hide">
+        <div className="space-y-4 overflow-y-scroll overflow-x-hidden h-[250px] md:h-[320px] scrollbar-hide">
           {recentlyPlayed.map((track, index) => (
             <RecentlyPlayed
               key={index}
@@ -65,7 +65,7 @@ const Right = ({ chooseTrack, spotifyApi }) => {
         <button className="text-[#CECECE] bg-[#1A1A1A] text-[13px] py-3.5 px-4 rounded-2xl w-full font-bold bg-opacity-80 hover:bg-opacity-100 transition ease-out">
           View All
         </button>
-      </div>
+        </div> 
     </section>
   );
 }
