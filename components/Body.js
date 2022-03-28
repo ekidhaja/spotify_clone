@@ -11,6 +11,7 @@ const Body = ({ chooseTrack, spotifyApi }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [newReleases, setNewReleases] = useState([]);
 
+  //check if accessToken is valid and set it
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
@@ -64,14 +65,11 @@ const Body = ({ chooseTrack, spotifyApi }) => {
   return (
     <section className="pb-32 bg-black pr-4 py-4 space-y-8 overflow-y-scroll
     scrollbar-hide h-screen md:max-w-6xl flex-grow">
-    {/*<section className="bg-black ml-24 py-4 space-y-8 md:max-w-6xl flex-grow md:mr-2.5">*/}
       <Search search={search} setSearch={setSearch} />
       <div className="scrollbar-hide h-[auto] pr-4 py-4 overflow-x-scroll w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:w-[600px] gap-x-4 
         gap-y-8 p-4 md:grid-cols-4 pr-4 py-4
         md:w-[1200px]">
-      {/*<div className="grid overflow-y-scroll scrollbar-hide h-96 py-4 grid-cols-2 
-      lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8 p-4">*/}
         {searchResults.length === 0
           ? newReleases
               .slice(0, 4)
@@ -95,7 +93,7 @@ const Body = ({ chooseTrack, spotifyApi }) => {
       </div>
 
       <div className="md:flex md:gap-x-8 min-w-full">
-        {/* Genres */}
+        {/* Display Genres */}
         <div className="mb-14 md:max-w-[30%] xl:min-w-[25%]">
           <h2 className="text-white font-bold mb-3">Genres</h2>
           <div className="flex gap-x-2 gap-y-2.5 flex-wrap mb-3">
@@ -114,7 +112,7 @@ const Body = ({ chooseTrack, spotifyApi }) => {
           </button>
         </div>
 
-        {/* Tracks */}
+        {/* Display Tracks */}
         <div className="md:max-w-[70%] xl:min-w-[72%]">
           <h2 className="text-white font-bold mb-3">
             {searchResults.length === 0 ? "New Releases" : "Tracks"}

@@ -5,6 +5,7 @@ const RecentlyPlayed = ({ track, chooseTrack }) => {
   const [play, setPlay] = useRecoilState(playState);
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
 
+  //play this track when play button is clicked
   const handlePlay = () => {
     chooseTrack(track);
 

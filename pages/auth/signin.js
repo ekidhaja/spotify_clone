@@ -31,6 +31,8 @@ const Signin = ({ providers }) => {
             objectFit="contain"
             className="animate-pulse"
         />
+
+        {/* display sign in auth providers */}
         {Object.values(providers).map((provider) => (
             <div key={provider.name}>
             <button

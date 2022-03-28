@@ -6,6 +6,7 @@ const Poster = ({ track, chooseTrack }) => {
   const [play, setPlay] = useRecoilState(playState);
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
 
+  //play this song on the music player when play button is clicked
   const handlePlay = () => {
     chooseTrack(track);
 

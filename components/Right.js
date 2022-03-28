@@ -12,7 +12,7 @@ const Right = ({ chooseTrack, spotifyApi }) => {
   const { accessToken } = session;
   const [recentlyPlayed, setRecentlyPlayed] = useState([]);
 
-  // Recently Played Tracks...
+  // get recently Played Tracks from spotify
   useEffect(() => {
     if (!accessToken) return;
 
@@ -46,7 +46,7 @@ const Right = ({ chooseTrack, spotifyApi }) => {
         <Dropdown />
       </div>
 
-      {/* Recently Played Tracks */}
+      {/* display recently Played Tracks */}
       <div className="bg-[#0D0D0D] border-2 border-[#262626] p-4 rounded-xl space-y-4">
         <div className="flex items-center justify-between">
           <h4 className="text-white font-semibold text-sm">Recently Played</h4>

@@ -8,14 +8,17 @@ import { useRecoilState } from "recoil";
 import Body from "./Body";
 import Right from "./Right";
 
+//instantiate the spotify Api with client ID
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_CLIENT_ID,
 });
 
 const Dashboard = () => {
+  //set up use of nex auth session
   const { data: session } = useSession();
   const { accessToken } = session;
 
+  //get playing track state in order to start the music player
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
   const [showPlayer, setShowPlayer] = useState(false);
 
@@ -23,10 +26,12 @@ const Dashboard = () => {
     setShowPlayer(true);
   }, []);
 
+  //functon to change track on music player when chosen by user
   const chooseTrack = (track) => {
     setPlayingTrack(track);
   };
 
+  //check if accessToken is valid and set it
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
@@ -34,7 +39,6 @@ const Dashboard = () => {
 
   return (
     <main className="bg-white flex">
-    {/*<main className="flex min-h-screen min-w-max bg-black lg:pb-24">*/}
       <Sidebar />
       <Body chooseTrack={chooseTrack} spotifyApi={spotifyApi} />
       <Right chooseTrack={chooseTrack} spotifyApi={spotifyApi} /> 
