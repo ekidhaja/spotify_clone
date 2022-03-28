@@ -15,7 +15,7 @@ export default function Dropdown() {
           <img
             src={session.user.image}
             alt=""
-            className="rounded-full w-11 h-11 absolute -right-1 object-cover"
+            className="rounded-full bg-[#ddd] w-11 h-11 absolute -right-1 object-cover"
           />
         </Menu.Button>
       </div>

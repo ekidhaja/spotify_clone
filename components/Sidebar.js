@@ -3,10 +3,12 @@ import {
     ClockIcon,
     DotsHorizontalIcon,
     HomeIcon,
+    LogoutIcon
   } from "@heroicons/react/solid";
   import { FaMicrophoneAlt } from "react-icons/fa";
   import { RiCompassFill } from "react-icons/ri";
   import Image from "next/image";
+  import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
     return (
@@ -25,6 +27,7 @@ const Sidebar = () => {
                 <ChartBarIcon className="sidebarIcon" />
                 <ClockIcon className="sidebarIcon" />
                 <DotsHorizontalIcon className="sidebarIcon" />
+                <LogoutIcon className="sidebarIcon lg:hidden" onClick={() => signOut({ redirect: false })} />
             </div>
         </section>
     );
