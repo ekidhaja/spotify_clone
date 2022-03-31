@@ -1,6 +1,6 @@
 ## Overview
 
-![Spotify redesign](https://cdn.dribbble.com/users/1133834/screenshots/15165960/media/03c6c87cfbbc7cc37af7ed808e1dfd7e.png)
+![Preview](./public/spotify_preview.png)
 
 ## Description
 
